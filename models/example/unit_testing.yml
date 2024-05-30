@@ -1,0 +1,13 @@
+unit_tests:
+  - name: test_is_valid_second_dbt_model
+    description: "Check my is_valid_email_address logic captures all known edge cases - emails without ., emails without @, and emails from invalid domains."
+    model: my_second_dbt_model
+    given:
+      - input: ref('my_first_dbt_model')
+        rows:
+          - { id: 2 }
+          - { id: 1 }
+    expect:
+      rows:
+        - { id: 1 }
+        - { id: 1 }
